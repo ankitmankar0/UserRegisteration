@@ -103,7 +103,7 @@ namespace UserRegisteration
         public void ValidatingPassWord()
         {
             //string passwordPattern = @"[a-z,A-Z,0-9]{8,}$";
-            string passwordPattern = @"^(?=.*[A-Z]).{8,}$";
+            string passwordPattern = @"^[0-9]+[\s]+[0-9]{10}$";
             Regex regex = new Regex(passwordPattern);
             Console.WriteLine("Enter password minimum 8 characters with one upper case");
             string password = Console.ReadLine();
