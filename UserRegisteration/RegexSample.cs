@@ -55,32 +55,63 @@ namespace UserRegisteration
         {
             Regex regex = new Regex("^[A-Z][a-z]{2,}$");
             bool res = regex.IsMatch(firstName);
-            if (res)
+            try
             {
-                Console.WriteLine("Valid");
-                return firstName;
+                if (firstName.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "First name should not be empty");
+                }
+                if (firstName.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Last name should not be null");
+                }
+                if (res)
+                {
+                    Console.WriteLine("Valid");
+                    return firstName;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "First should be valid"); throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "First should be valid");
+                }
+
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Invalid");
+                return ex.Message;
+
             }
-            return default;
         }
         public static string ValidatingLastName(string lastName)
         {
             string pattern = "^[A-Z][a-z]{2,}$";
             Regex regex = new Regex(pattern);
             bool res1 = regex.IsMatch(lastName);
-            if (res1)
+            try
             {
-                Console.WriteLine("Valid");
-                return lastName;
+                if (lastName.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Last name should not be empty");
+                }
+                if (lastName.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Last name should not be null");
+                }
+                if (res1)
+                {
+                    Console.WriteLine("Valid");
+                    return lastName;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Last name should be valid");
+                }
+                //return default;
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Invalid");
+                return ex.Message;
             }
-            return default;
 
         }
         public static string ValidatingEmailId(string email)
@@ -91,17 +122,34 @@ namespace UserRegisteration
             // for (int i = 0; i < emailInput.Length; i++)
             //{
             bool result = regex.IsMatch(email);
-            if (result)
+            try
             {
-                Console.WriteLine(email + " ----->Valid");
-                return email;
+                if (email.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Email Id should not be empty");
+                }
+                if (email.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Email Id should not be null");
+                }
+
+                if (result)
+                {
+                    Console.WriteLine(email + " ----->Valid");
+                    return email;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Email Id should be valid");
+                }
+
+                //return default;
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine(email + " ----->Invalid");
+                return ex.Message;
             }
 
-            return default;
         }
 
         public static string ValidatingPhoneNum(string phoneNum)
@@ -111,38 +159,69 @@ namespace UserRegisteration
             Regex regex = new Regex(phoneNumPattern);
 
             bool result = regex.IsMatch(phoneNum);
-            if (result)
+            try
             {
-                Console.WriteLine(phoneNum + " ----->Valid");
-                return phoneNum;
+                if (phoneNum.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Phone number should not be empty");
+                }
+                if (phoneNum.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Phone number should not be null");
+                }
+                if (result)
+                {
+                    Console.WriteLine(phoneNum + " ----->Valid");
+                    return phoneNum;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Phone number should be valid");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine(phoneNum + " ----->InValid");
+                return ex.Message;
             }
-            return default;
         }
+
+
 
 
         public static string ValidatingPassWord(string password)
         {
-            string[] passwordInput = { "Ankit@12", "anKit_32", "manoj123", "prathee" };
+            string[] passwordInput = { "Shalini@12", "sakAthi_32", "raksha123", "prathee" };
             string passwordPattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
 
             Regex regex = new Regex(passwordPattern);
 
             bool result = regex.IsMatch(password);
-            if (result)
+            try
             {
-                Console.WriteLine(password + " ----->Valid");
-                return password;
+                if (password.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Password should not be empty");
+                }
+                if (password.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Password should not be null");
+                }
+                if (result)
+                {
+                    Console.WriteLine(password + " ----->Valid");
+                    return password;
+                }
+                else
+                {
+
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Passwordshould be valid");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine(password + " ----->InValid");
+                return ex.Message;
             }
 
-            return default;
         }
     }
 }
