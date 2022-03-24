@@ -15,8 +15,13 @@ namespace UserRegisteration
             Regex regex = new Regex(pattern);
             Console.WriteLine("Validating the first name");
             ValidatingFirstName();
+            Console.WriteLine("Validating The Last Name");
+            ValidatingLastName();
 
         }
+
+
+
         public void ValidatingFirstName()
         {
             Regex Regex = new Regex(pattern);
@@ -24,6 +29,21 @@ namespace UserRegisteration
             string input = Console.ReadLine();
             bool res = Regex.IsMatch(input);
             if (res)
+            {
+                Console.WriteLine("Valid");
+            }
+            else
+            {
+                Console.WriteLine("Invalid");
+            }
+        }
+        public void ValidatingLastName()
+        {
+            Regex regex = new Regex(pattern);
+            Console.WriteLine("Enter the last name : ");
+            string input1 = Console.ReadLine();
+            bool res1 = regex.IsMatch(input1);
+            if (res1)
             {
                 Console.WriteLine("Valid");
             }
