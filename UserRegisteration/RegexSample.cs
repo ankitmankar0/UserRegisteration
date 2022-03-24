@@ -17,8 +17,6 @@ namespace UserRegisteration
             ValidatingFirstName();
 
         }
-
-
         public void ValidatingFirstName()
         {
             Regex Regex = new Regex(pattern);
